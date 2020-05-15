@@ -41,6 +41,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     " vem-tabline
     Plug 'pacha/vem-tabline'
+    " Tabular
+    Plug 'godlygeek/tabular'
 call plug#end()
  
 
