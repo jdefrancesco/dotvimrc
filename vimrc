@@ -28,7 +28,7 @@ call plug#begin('~/.vim/plugged')
     " Next gen completion engine
     Plug 'shougo/neocomplete.vim'
     " Minibuf
-    " Plug 'fholgado/minibufexpl.vim'
+    Plug 'fholgado/minibufexpl.vim'
     " Tagbar
     Plug 'majutsushi/tagbar'
     " CtrlP
@@ -103,7 +103,8 @@ vmap <C-Down> xp`[V`]
 " Formatting
 map <leader>q gqip
 " Visualize tabs and newlines
-set listchars=tab:▸\ ,eol:¬
+" set listchars=trail:·,tab:▸\ ,eol:¬
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 "
 " Uncomment this to enable by default:
 " set list " To enable by default
@@ -111,8 +112,16 @@ set listchars=tab:▸\ ,eol:¬
 map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " Navigate tabs/buffers
+nnoremap <left> :tabprev<CR>
+nnoremap <right> :tabnext<CR>
+nnoremap <up> :bnext<CR>
+nnoremap <down> :bprev<CR>
 
-nnoremap <left> :bprev<CR>
-nnoremap <right> :bnext<CR>
-nnoremap <up> :tabnext<CR>
-nnoremap <down> :tabprev<CR>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+ 
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
