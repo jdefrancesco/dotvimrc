@@ -53,6 +53,10 @@ call plug#end()
 
 " Colors
 set t_Co=256
+" Italic support
+" set t_ZH=[3m
+" set t_ZR=^[[23m
+
 " if has("gui_running")
 "     colorscheme grb256
 " else
@@ -99,6 +103,9 @@ set autochdir
 " set nolist
 set nocursorcolumn
 set nocursorline
+
+" Set crypt method
+set cm=blowfish2
 
 filetype plugin indent on
 filetype on
