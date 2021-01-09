@@ -28,28 +28,47 @@ call plug#begin('~/.vim/plugged')
     " Next gen completion engine
     Plug 'shougo/neocomplete.vim'
     " Minibuf
-    Plug 'fholgado/minibufexpl.vim'
+    " Plug 'fholgado/minibufexpl.vim'
     " Tagbar
     Plug 'majutsushi/tagbar'
     " CtrlP
     Plug 'kien/ctrlp.vim'
     " Vim solarized colors
     Plug 'altercation/vim-colors-solarized'
-    " ACK
-    Plug 'mileszs/ack.vim'
     " Auto comment/decomment
     Plug 'tpope/vim-commentary'
     " vem-tabline
     Plug 'pacha/vem-tabline'
     " Tabular
     Plug 'godlygeek/tabular'
+    " Sneak - Easy movement
+    Plug 'justinmk/vim-sneak'
+    " More themes
+    Plug 'flazz/vim-colorschemes'
+    " Vim ObjC
+    Plug 'b4winckler/vim-objc'
+    " Vim Startify Menu
+    Plug 'mhinz/vim-startify'
 call plug#end()
- 
 
-set nu
+" Colors
 set t_Co=256
+" if has("gui_running")
+"     colorscheme grb256
+" else
+"     colorscheme jellybeans
+" endif
+colorscheme tender
 
-colorscheme jellybeans
+" Sneak config options
+let g:sneak#label = 1
+
+" Clang completion engine
+let g:clanc_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
+" Line numbers
+set nu
 
 " Menus
 set display+=lastline
@@ -77,7 +96,7 @@ set novisualbell
 set nocursorcolumn
 set autochdir
 
-set nolist
+" set nolist
 set nocursorcolumn
 set nocursorline
 
@@ -85,6 +104,7 @@ filetype plugin indent on
 filetype on
 
 let mapleader=","
+
 
 " Toggle NERDTree
 nnoremap <Leader>f :NERDTreeToggle<Enter>
@@ -102,14 +122,12 @@ vmap <C-Down> xp`[V`]
 "
 " Formatting
 map <leader>q gqip
+
 " Visualize tabs and newlines
-" set listchars=trail:·,tab:▸\ ,eol:¬
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
-"
-" Uncomment this to enable by default:
-" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-map <leader>l :set list!<CR> " Toggle tabs and EOL
+set listchars=trail:·,tab:▸\ ,eol:¬
+" set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+nnoremap <leader>l :set list!<CR> " Toggle tabs and EOL
+nnoremap <leader>ec :e $MYVIMRC<CR>
 
 " Navigate tabs/buffers
 nnoremap <left> :tabprev<CR>
@@ -119,9 +137,5 @@ nnoremap <down> :bprev<CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
- 
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
 
+set belloff=all
