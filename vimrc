@@ -99,10 +99,16 @@ set noerrorbells
 set novisualbell
 set nocursorcolumn
 set autochdir
+set noswapfile
 
 " set nolist
 set nocursorcolumn
 set nocursorline
+
+" Mouse support
+" Set mouse support for normal mode only to avoid creating visual
+" selections when clicking around....
+set mouse=n
 
 " Set crypt method
 set cm=blowfish2
