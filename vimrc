@@ -26,9 +26,9 @@ call plug#begin('~/.vim/plugged')
     " Clang complete
     Plug 'rip-rip/clang_complete'
     " Next gen completion engine
-    Plug 'shougo/neocomplete.vim'
-    " Minibuf
-    " Plug 'fholgado/minibufexpl.vim'
+    " Plug 'shougo/neocomplete.vim'
+    " Buftabline
+    Plug 'ap/vim-buftabline'
     " Tagbar
     Plug 'majutsushi/tagbar'
     " CtrlP
@@ -37,39 +37,39 @@ call plug#begin('~/.vim/plugged')
     Plug 'altercation/vim-colors-solarized'
     " Auto comment/decomment
     Plug 'tpope/vim-commentary'
-    " vem-tabline
-    Plug 'pacha/vem-tabline'
     " Tabular
     Plug 'godlygeek/tabular'
     " Sneak - Easy movement
     Plug 'justinmk/vim-sneak'
     " More themes
     Plug 'flazz/vim-colorschemes'
-    " Vim ObjC
-    Plug 'b4winckler/vim-objc'
     " Vim Startify Menu
     Plug 'mhinz/vim-startify'
+    " Arduino
+    Plug 'stevearc/vim-arduino'
 call plug#end()
 
 " Colors
 set t_Co=256
-" Italic support
-" set t_ZH=[3m
-" set t_ZR=^[[23m
 
-" if has("gui_running")
-"     colorscheme grb256
-" else
-"     colorscheme jellybeans
-" endif
-colorscheme tender
+if has("gui_running")
+     colorscheme github
+else
+    colorscheme gruvbox
+ endif
+" colorschemeh tender
 
 " Sneak config options
 let g:sneak#label = 1
 
 " Clang completion engine
-let g:clanc_c_options = '-std=c11'
+let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
+let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-B> :bprev<CR>
 
 " Line numbers
 set nu
@@ -92,6 +92,8 @@ set smarttab
 set autoindent
 set smartindent
 
+set shell=/bin/zsh
+
 autocmd BufWritePre *.c,*.py %s/\s\+$//e
 
 set encoding=utf-8
@@ -108,7 +110,7 @@ set nocursorline
 " Mouse support
 " Set mouse support for normal mode only to avoid creating visual
 " selections when clicking around....
-set mouse=n
+set mouse=a
 
 " Set crypt method
 set cm=blowfish2
@@ -118,6 +120,15 @@ filetype on
 
 let mapleader=","
 
+nnoremap <leader>1 :1tabnext<CR>
+nnoremap <leader>2 :2tabnext<CR>
+nnoremap <leader>3 :3tabnext<CR>
+nnoremap <leader>4 :4tabnext<CR>
+nnoremap <leader>5 :5tabnext<CR>
+nnoremap <leader>6 :6tabnext<CR>
+nnoremap <leader>7 :7tabnext<CR>
+nnoremap <leader>8 :8tabnext<CR>
+nnoremap <leader>9 :9tabnext<CR>
 
 " Toggle NERDTree
 nnoremap <Leader>f :NERDTreeToggle<Enter>
@@ -143,10 +154,10 @@ nnoremap <leader>l :set list!<CR> " Toggle tabs and EOL
 nnoremap <leader>ec :e $MYVIMRC<CR>
 
 " Navigate tabs/buffers
-nnoremap <left> :tabprev<CR>
-nnoremap <right> :tabnext<CR>
-nnoremap <up> :bnext<CR>
-nnoremap <down> :bprev<CR>
+" nnoremap <left> :tabprev<CR>
+" nnoremap <right> :tabnext<CR>
+" nnoremap <up> :bnext<CR>
+" nnoremap <down> :bprev<CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
