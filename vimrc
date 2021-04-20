@@ -47,6 +47,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'mhinz/vim-startify'
     " Arduino
     Plug 'stevearc/vim-arduino'
+    " Surround 
+    Plug 'tpope/vim-surround'
+    " Dracula colorscheme
+    Plug 'dracula/vim', {'as': 'dracula'}
+
 call plug#end()
 
 " Colors
@@ -57,7 +62,7 @@ if has("gui_running")
 else
     colorscheme gruvbox
  endif
-" colorschemeh tender
+" colorscheme tender
 
 " Sneak config options
 let g:sneak#label = 1
@@ -66,6 +71,9 @@ let g:sneak#label = 1
 let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
 let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
+# Ctrl-P
+let g:ctrlp_show_hidden = 1
 
 set hidden
 nnoremap <C-N> :bnext<CR>
