@@ -72,7 +72,7 @@ let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
 let g:clang_c_options = '-std=c11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 
-# Ctrl-P
+" Ctrl-P
 let g:ctrlp_show_hidden = 1
 
 set hidden
