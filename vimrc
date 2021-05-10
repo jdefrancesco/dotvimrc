@@ -55,14 +55,18 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Colors
-set t_Co=256
+" set t_Co=256
 
 if has("gui_running")
-     colorscheme github
+    colorscheme github
 else
     colorscheme gruvbox
- endif
-" colorscheme tender
+endif
+
+if has('gui_macvim')
+    set guifont=Hack:h10
+    set linespace=0
+endif
 
 " Sneak config options
 let g:sneak#label = 1
@@ -116,8 +120,6 @@ set nocursorcolumn
 set nocursorline
 
 " Mouse support
-" Set mouse support for normal mode only to avoid creating visual
-" selections when clicking around....
 set mouse=a
 
 " Set crypt method
