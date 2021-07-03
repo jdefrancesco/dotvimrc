@@ -25,8 +25,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-scripts/taglist.vim'
     " Clang complete
     Plug 'rip-rip/clang_complete'
-    " Next gen completion engine
-    " Plug 'shougo/neocomplete.vim'
     " Buftabline
     Plug 'ap/vim-buftabline'
     " Tagbar
@@ -47,7 +45,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'mhinz/vim-startify'
     " Arduino
     Plug 'stevearc/vim-arduino'
-    " Surround 
+    " Surround
     Plug 'tpope/vim-surround'
     " Dracula colorscheme
     Plug 'dracula/vim', {'as': 'dracula'}
@@ -58,13 +56,14 @@ call plug#end()
 " set t_Co=256
 
 if has("gui_running")
-    colorscheme github
+    colorscheme zenburn
 else
     colorscheme gruvbox
 endif
 
 if has('gui_macvim')
-    set guifont=Hack:h10
+    " set guifont=Hack:h10
+    set guifont=SFMono-Regular:h10
     set linespace=0
 endif
 
@@ -88,7 +87,7 @@ set nu
 
 " Menus
 set display+=lastline
-set wildmenu   
+set wildmenu
 set wildmode=list:full
 set wildignorecase
 
@@ -106,10 +105,10 @@ set smartindent
 
 set shell=/bin/zsh
 
-autocmd BufWritePre *.c,*.py %s/\s\+$//e
+autocmd BufWritePre * %s/\s\+$//e
 
 set encoding=utf-8
-set noerrorbells 
+set noerrorbells
 set novisualbell
 set nocursorcolumn
 set autochdir
@@ -130,15 +129,6 @@ filetype on
 
 let mapleader=","
 
-nnoremap <leader>1 :1tabnext<CR>
-nnoremap <leader>2 :2tabnext<CR>
-nnoremap <leader>3 :3tabnext<CR>
-nnoremap <leader>4 :4tabnext<CR>
-nnoremap <leader>5 :5tabnext<CR>
-nnoremap <leader>6 :6tabnext<CR>
-nnoremap <leader>7 :7tabnext<CR>
-nnoremap <leader>8 :8tabnext<CR>
-nnoremap <leader>9 :9tabnext<CR>
 
 " Toggle NERDTree
 nnoremap <Leader>f :NERDTreeToggle<Enter>
@@ -159,7 +149,6 @@ map <leader>q gqip
 
 " Visualize tabs and newlines
 set listchars=trail:·,tab:▸\ ,eol:¬
-" set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 nnoremap <leader>l :set list!<CR> " Toggle tabs and EOL
 nnoremap <leader>ec :e $MYVIMRC<CR>
 
