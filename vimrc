@@ -58,7 +58,8 @@ call plug#end()
 if has("gui_running")
     colorscheme zenburn
 else
-    colorscheme gruvbox
+    " colorscheme gruvbox
+    colorscheme zenburn
 endif
 
 if has('gui_macvim')
