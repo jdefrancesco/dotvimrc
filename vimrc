@@ -49,7 +49,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'
     " Dracula colorscheme
     Plug 'dracula/vim', {'as': 'dracula'}
-
+    " Session plugin
+    Plug 'xolox/vim-session'
+    " Vim misc
+    Plug 'xolox/vim-misc'
 call plug#end()
 
 " Colors
@@ -58,7 +61,6 @@ call plug#end()
 if has("gui_running")
     colorscheme zenburn
 else
-    " colorscheme gruvbox
     colorscheme zenburn
 endif
 
@@ -152,12 +154,6 @@ map <leader>q gqip
 set listchars=trail:·,tab:▸\ ,eol:¬
 nnoremap <leader>l :set list!<CR> " Toggle tabs and EOL
 nnoremap <leader>ec :e $MYVIMRC<CR>
-
-" Navigate tabs/buffers
-" nnoremap <left> :tabprev<CR>
-" nnoremap <right> :tabnext<CR>
-" nnoremap <up> :bnext<CR>
-" nnoremap <down> :bprev<CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
