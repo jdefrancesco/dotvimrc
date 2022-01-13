@@ -56,13 +56,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Colors
-" set t_Co=256
-
-if has("gui_running")
-    colorscheme zenburn
-else
-    colorscheme zenburn
-endif
+colorscheme badwolf
 
 if has('gui_macvim')
     " set guifont=Hack:h10
@@ -74,9 +68,11 @@ endif
 let g:sneak#label = 1
 
 " Clang completion engine
-let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
-let g:clang_c_options = '-std=c11'
-let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+if has('linux')
+    let g:clang_library_path = '/lib/x86_64-linux-gnu/libclang-10.so'
+    let g:clang_c_options = '-std=c11'
+    let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+endif
 
 " Ctrl-P
 let g:ctrlp_show_hidden = 1
@@ -108,6 +104,7 @@ set smartindent
 
 set shell=/bin/zsh
 
+" Get rid of trailing white space when we save.
 autocmd BufWritePre * %s/\s\+$//e
 
 set encoding=utf-8
@@ -159,3 +156,4 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 
 set belloff=all
+let g:session_autosave = 'no'
