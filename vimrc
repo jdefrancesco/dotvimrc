@@ -56,7 +56,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 " Colors
-colorscheme badwolf
+colorscheme grb256
 
 if has('gui_macvim')
     " set guifont=Hack:h10
@@ -78,8 +78,8 @@ endif
 let g:ctrlp_show_hidden = 1
 
 set hidden
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-B> :bprev<CR>
+nnoremap <C-M> :bnext<CR>
+nnoremap <C-N> :bprev<CR>
 
 " Line numbers
 set nu
