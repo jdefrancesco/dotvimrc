@@ -19,7 +19,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'nanotech/jellybeans.vim'
     " Go programming extension
     Plug 'fatih/vim-go'
-    " Snippets
+    " Ultimate snippets for vim
+    Plug 'sirver/ultisnips'
+    " Snippest are seperate from engine
     Plug 'honza/vim-snippets'
     " Taglist
     Plug 'vim-scripts/taglist.vim'
@@ -47,8 +49,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'stevearc/vim-arduino'
     " Surround
     Plug 'tpope/vim-surround'
-    " Dracula colorscheme
-    Plug 'dracula/vim', {'as': 'dracula'}
     " Session plugin
     Plug 'xolox/vim-session'
     " Vim misc
@@ -107,6 +107,9 @@ set shell=/bin/zsh
 " Get rid of trailing white space when we save.
 autocmd BufWritePre * %s/\s\+$//e
 
+" Re-indent html when we write the file.
+autocmd BufWritePre *.html :normal gg=G
+
 set encoding=utf-8
 set noerrorbells
 set novisualbell
@@ -127,6 +130,7 @@ set cm=blowfish2
 filetype plugin indent on
 filetype on
 
+" leader key set to comma
 let mapleader=","
 
 
@@ -157,3 +161,10 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 
 set belloff=all
 let g:session_autosave = 'no'
+
+" Vimscripts file settings =========== {{{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}}
