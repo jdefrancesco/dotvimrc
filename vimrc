@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged')
     " Taglist
     Plug 'vim-scripts/taglist.vim'
     " Clang complete
-    Plug 'rip-rip/clang_complete'
+    " Plug 'rip-rip/clang_complete'
     " Buftabline
     Plug 'ap/vim-buftabline'
     " Tagbar
@@ -34,7 +34,7 @@ call plug#begin('~/.vim/plugged')
     " CtrlP
     Plug 'kien/ctrlp.vim'
     " Vim solarized colors
-    Plug 'altercation/vim-colors-solarized'
+    " Plug 'altercation/vim-colors-solarized'
     " Auto comment/decomment
     Plug 'tpope/vim-commentary'
     " Tabular
@@ -53,16 +53,22 @@ call plug#begin('~/.vim/plugged')
     Plug 'xolox/vim-session'
     " Vim misc
     Plug 'xolox/vim-misc'
+    " ANSI Esc
+    Plug 'powerman/vim-plugin-ansiesc'
+    " Vimspector - GDB
+    Plug 'puremourning/vimspector'
 call plug#end()
 
 " Colors
+set termguicolors
 colorscheme grb256
 
 if has('gui_macvim')
     " set guifont=Hack:h10
-    set guifont=SFMono-Regular:h10
+    set guifont=TerminusTTF:h14
     set linespace=0
 endif
+
 
 " Sneak config options
 let g:sneak#label = 1
@@ -74,25 +80,46 @@ if has('linux')
     let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 endif
 
-let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
-let g:clang_c_options = '-std=c11'
-let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+if has('darwin')
+    let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/'
+    let g:clang_c_options = '-std=c11'
+    let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+endif
+
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " Ctrl-P
-let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden=1
 
-set hidden
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" " Vimspector shortcuts
+" nnoremap <Leader>dd :call vimspector#Launch()<CR>
+" nnoremap <Leader>de :call vimspector#Reset()<CR>
+" nnoremap <Leader>dc :call vimspector#Continue()<CR>
+" nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
+" nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
+" nmap <Leader>dk <Plug>VimspectorRestart
+" nmap <Leader>dh <Plug>VimspectorStepOut
+" nmap <Leader>dl <Plug>VimspectorStepInto
+" nmap <Leader>dj <Plug>VimspectorStepOver
+" " End vimspector
+
 nnoremap <C-M> :bnext<CR>
 nnoremap <C-N> :bprev<CR>
-
-" Line numbers
-set nu
 
 " Menus
 set display+=lastline
 set wildmenu
 set wildmode=list:full
 set wildignorecase
+set nu
 
 set ttyfast
 set nowrap
@@ -101,16 +128,19 @@ set tabstop=4
 set softtabstop=0
 set expandtab
 set shiftwidth=4
-
 set smarttab
 set autoindent
 set smartindent
+set cursorline
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
 
 set shell=/bin/zsh
 
 " Get rid of trailing white space when we save.
 autocmd BufWritePre * %s/\s\+$//e
-
 " Re-indent html when we write the file.
 autocmd BufWritePre *.html :normal gg=G
 
@@ -120,16 +150,10 @@ set novisualbell
 set nocursorcolumn
 set autochdir
 set noswapfile
-
-" set nolist
 set nocursorcolumn
-set nocursorline
-
-" Mouse support
 set mouse=a
-
-" Set crypt method
 set cm=blowfish2
+set fileformat=unix
 
 filetype plugin indent on
 filetype on
@@ -137,10 +161,8 @@ filetype on
 " leader key set to comma
 let mapleader=","
 
-
 " Toggle NERDTree
 nnoremap <Leader>f :NERDTreeToggle<Enter>
-
 " Toggle TagBar
 nnoremap <Leader>t :TagbarToggle<Enter>
 
