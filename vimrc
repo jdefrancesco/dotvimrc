@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged')
     " Taglist
     Plug 'vim-scripts/taglist.vim'
     " Clang complete
-    " Plug 'rip-rip/clang_complete'
+    Plug 'rip-rip/clang_complete'
     " Buftabline
     Plug 'ap/vim-buftabline'
     " Tagbar
@@ -34,7 +34,7 @@ call plug#begin('~/.vim/plugged')
     " CtrlP
     Plug 'kien/ctrlp.vim'
     " Vim solarized colors
-    " Plug 'altercation/vim-colors-solarized'
+    Plug 'altercation/vim-colors-solarized'
     " Auto comment/decomment
     Plug 'tpope/vim-commentary'
     " Tabular
@@ -53,10 +53,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'xolox/vim-session'
     " Vim misc
     Plug 'xolox/vim-misc'
-    " ANSI Esc
-    Plug 'powerman/vim-plugin-ansiesc'
-    " Vimspector - GDB
-    Plug 'puremourning/vimspector'
+    " EasyComplete
+    Plug 'jayli/vim-easycomplete'
 call plug#end()
 
 " Colors
@@ -86,30 +84,25 @@ if has('darwin')
     let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 endif
 
-let g:vimspector_enable_mappings = 'HUMAN'
+let g:easycomplete_tab_trigger="<tab>"
+let g:easycomplete_tabnine_config = {
+    \ 'line_limit': 1000,
+    \ 'max_num_result' : 10,
+    \ }
+noremap gr :EasyCompleteReference<CR>
+noremap gd :EasyCompleteGotoDefinition<CR>
+noremap rn :EasyCompleteRename<CR>
+noremap gb :BackToOriginalBuffer<CR>
 
-" Ctrl-P
-let g:ctrlp_show_hidden=1
-
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-space>"
 let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" " Vimspector shortcuts
-" nnoremap <Leader>dd :call vimspector#Launch()<CR>
-" nnoremap <Leader>de :call vimspector#Reset()<CR>
-" nnoremap <Leader>dc :call vimspector#Continue()<CR>
-" nnoremap <Leader>dt :call vimspector#ToggleBreakpoint()<CR>
-" nnoremap <Leader>dT :call vimspector#ClearBreakpoints()<CR>
-" nmap <Leader>dk <Plug>VimspectorRestart
-" nmap <Leader>dh <Plug>VimspectorStepOut
-" nmap <Leader>dl <Plug>VimspectorStepInto
-" nmap <Leader>dj <Plug>VimspectorStepOver
-" " End vimspector
+" Ctrl-P
+let g:ctrlp_show_hidden=1
 
 nnoremap <C-M> :bnext<CR>
 nnoremap <C-N> :bprev<CR>
@@ -138,6 +131,7 @@ set incsearch
 set hlsearch
 
 set shell=/bin/zsh
+let g:session_autosave = 'yes'
 
 " Get rid of trailing white space when we save.
 autocmd BufWritePre * %s/\s\+$//e
@@ -184,13 +178,13 @@ nnoremap <leader>ec :e $MYVIMRC<CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
-
-set belloff=all
 let g:session_autosave = 'no'
 
+set belloff=all
+
 " Vimscripts file settings =========== {{{{
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
+" augroup filetype_vim
+"     autocmd!
+"     autocmd FileType vim setlocal foldmethod=marker
+" augroup END
 " }}}}
