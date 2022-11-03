@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged')
     " Taglist
     Plug 'vim-scripts/taglist.vim'
     " Clang complete
-    Plug 'rip-rip/clang_complete'
+    " Plug 'rip-rip/clang_complete'
     " Buftabline
     Plug 'ap/vim-buftabline'
     " Tagbar
@@ -37,6 +37,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'altercation/vim-colors-solarized'
     " Auto comment/decomment
     Plug 'tpope/vim-commentary'
+    " Fugitive Git
+    Plug 'tpope/vim-fugitive'
     " Tabular
     Plug 'godlygeek/tabular'
     " Sneak - Easy movement
@@ -55,11 +57,17 @@ call plug#begin('~/.vim/plugged')
     Plug 'xolox/vim-misc'
     " EasyComplete
     Plug 'jayli/vim-easycomplete'
+    " YCM
+    " Plug 'valloric/youcompleteme'
+    " Vim arduino support
+    Plug 'stevearc/vim-arduino'
+    Plug 'mangeshrex/everblush.vim'
+
 call plug#end()
 
 " Colors
 set termguicolors
-colorscheme grb256
+colorscheme everblush
 
 if has('gui_macvim')
     " set guifont=Hack:h10
@@ -104,6 +112,8 @@ let g:UltiSnipsEditSplit="vertical"
 " Ctrl-P
 let g:ctrlp_show_hidden=1
 
+let g:go_doc_popup_window = 1
+
 nnoremap <C-M> :bnext<CR>
 nnoremap <C-N> :bprev<CR>
 
@@ -124,7 +134,7 @@ set shiftwidth=4
 set smarttab
 set autoindent
 set smartindent
-set cursorline
+set nocursorline
 set ignorecase
 set smartcase
 set incsearch
