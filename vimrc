@@ -1,6 +1,8 @@
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
+    " Note Taking
+    Plug 'fmoralesc/vim-pad'
     " NERDTree
     Plug 'scrooloose/nerdtree'
     " TabNine completion engine - Fucking AMAZING
@@ -189,6 +191,8 @@ nnoremap <leader>ec :e $MYVIMRC<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:session_autosave = 'no'
+
+let g:pad#dir = "~/Dropbox/ObsidianNotes/Pad/"
 
 set belloff=all
 
