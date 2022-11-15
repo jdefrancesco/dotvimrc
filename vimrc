@@ -63,13 +63,17 @@ call plug#begin('~/.vim/plugged')
     " Plug 'valloric/youcompleteme'
     " Vim arduino support
     Plug 'stevearc/vim-arduino'
+    " Everblush theme
     Plug 'mangeshrex/everblush.vim'
+    " Tender colorscheme
+    Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
 " Colors
 set termguicolors
-colorscheme everblush
+colorscheme tender
+let g:airline_theme = 'tender'
 
 if has('gui_macvim')
     " set guifont=Hack:h10
